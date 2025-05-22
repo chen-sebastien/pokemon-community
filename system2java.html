@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>寶可夢交流社群平台</title>
+  <link rel="stylesheet" href="system.css">
+  <!-- 引入外部互動邏輯 -->
+  <script defer src="system.js"></script>
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="#registration">註冊/登入</a></li>
+        <li><a href="#card-data">卡牌資料</a></li>
+        <li><a href="#my-collection">我的收藏</a></li>
+        <li><a href="#deck-builder">卡組編輯器</a></li>
+        <li><a href="#trending-decks">熱門卡組</a></li>
+        <li><a href="#friend-center">好友中心</a></li>
+        <li><a href="#comments">留言評論</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- 1. 會員註冊與登入流程 -->
+    <section id="registration">
+      <h2>會員註冊與登入</h2>
+      <form id="register-form">
+        <label>帳號：<input type="text" name="username" required></label>
+        <label>密碼：<input type="password" name="password" required></label>
+        <label>暱稱：<input type="text" name="nickname" required></label>
+        <label>Email：<input type="email" name="email" required></label>
+        <button type="submit">註冊</button>
+      </form>
+      <form id="login-form" style="display: none;">
+        <label>帳號：<input type="text" name="username" required></label>
+        <label>密碼：<input type="password" name="password" required></label>
+        <button type="submit">登入</button>
+      </form>
+    </section>
+
+    <!-- 2. 卡牌查詢與瀏覽流程 -->
+    <section id="card-data">
+      <h2>卡牌資料</h2>
+      <div id="filters">
+        <select name="attribute"><option value="">屬性</option></select>
+        <select name="series"><option value="">系列</option></select>
+        <select name="rarity"><option value="">稀有度</option></select>
+        <button id="filter-btn">篩選</button>
+      </div>
+      <div id="card-list"></div>
+    </section>
+
+    <!-- 3. 持有卡與缺失卡管理流程 -->
+    <section id="my-collection">
+      <h2>我的收藏</h2>
+      <button id="import-btn">匯入遊戲資料</button>
+      <div id="collection-list"></div>
+      <h3>缺失卡清單</h3>
+      <div id="missing-list"></div>
+    </section>
+
+    <!-- 4. 卡組建立與分享流程 -->
+    <section id="deck-builder">
+      <h2>卡組編輯器</h2>
+      <div id="deck-cards"></div>
+      <div id="deck-area"></div>
+      <label>卡組名稱：<input type="text" id="deck-name"></label>
+      <label>簡介：<textarea id="deck-description"></textarea></label>
+      <label>公開：<input type="checkbox" id="deck-public"></label>
+      <button id="save-deck-btn">儲存卡組</button>
+    </section>
+
+    <!-- 5. 熱門卡組瀏覽與推薦流程 -->
+    <section id="trending-decks">
+      <h2>熱門卡組</h2>
+      <div id="trending-list"></div>
+    </section>
+
+    <!-- 6. 好友與卡片交換流程 -->
+    <section id="friend-center">
+      <h2>好友中心</h2>
+      <label>搜尋帳號：<input type="text" id="search-user"></label>
+      <button id="search-btn">搜尋</button>
+      <div id="friend-list"></div>
+    </section>
+
+    <!-- 7. 留言評論與管理流程 -->
+    <section id="comments">
+      <h2>留言評論</h2>
+      <div id="comment-section"></div>
+      <form id="comment-form">
+        <textarea name="comment" required></textarea>
+        <button type="submit">發表留言</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 寶可夢交流社群平台</p>
+  </footer>
+</body>
+</html>
