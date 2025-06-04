@@ -170,6 +170,16 @@
             border: 2px solid var(--primary-blue);
         }
         
+        .btn-google {
+            background: white;
+            color: var(--text-dark);
+            border: 1px solid var(--border-light);
+            box-shadow: var(--shadow-sm);
+            width: 100%;
+            justify-content: center;
+            margin-top: 15px;
+        }
+        
         .btn:hover {
             transform: translateY(-3px);
             box-shadow: var(--shadow-md);
@@ -709,6 +719,29 @@
             border-top: 1px solid var(--border-light);
         }
         
+        .divider {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            margin: 20px 0;
+            color: var(--text-light);
+        }
+        
+        .divider::before,
+        .divider::after {
+            content: '';
+            flex: 1;
+            border-bottom: 1px solid var(--border-light);
+        }
+        
+        .divider::before {
+            margin-right: 15px;
+        }
+        
+        .divider::after {
+            margin-left: 15px;
+        }
+        
         /*---------------------------------------------
           響應式設計
           ---------------------------------------------*/
@@ -1167,6 +1200,12 @@
                     </label>
                     <a href="#" style="float: right; color: var(--primary-blue);">忘記密碼?</a>
                 </div>
+                
+                <!-- Google 登入按鈕 -->
+                <div class="divider">或</div>
+                <button class="btn btn-google" id="google-login">
+                    <i class="fab fa-google" style="color: #DB4437;"></i> 使用 Google 帳號登入
+                </button>
             </div>
             <div class="modal-footer">
                 <button class="btn btn-outline close-btn">取消</button>
@@ -1204,6 +1243,12 @@
                         <input type="checkbox"> 我同意 <a href="#" style="color: var(--primary-blue);">服務條款</a> 和 <a href="#" style="color: var(--primary-blue);">隱私政策</a>
                     </label>
                 </div>
+                
+                <!-- Google 註冊按鈕 -->
+                <div class="divider">或</div>
+                <button class="btn btn-google" id="google-register">
+                    <i class="fab fa-google" style="color: #DB4437;"></i> 使用 Google 註冊
+                </button>
             </div>
             <div class="modal-footer">
                 <button class="btn btn-outline close-btn">取消</button>
@@ -1212,51 +1257,36 @@
         </div>
     </div>
     
-    <!-- 宝可梦详情模态框 -->
-    <div class="modal" id="pokemon-modal">
+    <!-- Google 登入成功模态框 -->
+    <div class="modal" id="google-success-modal">
         <div class="modal-content">
             <div class="modal-header">
-                <h2 id="pokemon-name">噴火龍</h2>
+                <h2><i class="fab fa-google" style="color: #4285F4;"></i> Google 登入成功</h2>
                 <button class="close-btn">&times;</button>
             </div>
             <div class="modal-body">
                 <div style="text-align: center; margin-bottom: 20px;">
-                    <div class="card-img" style="height: 200px; margin: 0 auto; width: 200px;">
-                        <i class="fas fa-dragon" style="font-size: 5rem;"></i>
+                    <i class="fas fa-check-circle" style="font-size: 4rem; color: var(--primary-green);"></i>
+                    <h3 style="margin-top: 20px;">歡迎回來，訓練師！</h3>
+                    <p>您已成功使用 Google 帳號登入 PokeHub</p>
+                </div>
+                
+                <div class="user-profile" style="display: flex; align-items: center; background: rgba(72, 169, 255, 0.1); padding: 15px; border-radius: 12px; margin-top: 20px;">
+                    <div class="user-avatar-large" style="width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, var(--primary-blue), var(--primary-purple)); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; margin-right: 15px;">
+                        <i class="fas fa-user"></i>
                     </div>
-                    <div class="card-type type-fire" style="display: inline-block; margin-top: 15px;">火系/飛行</div>
-                </div>
-                
-                <div class="form-group">
-                    <h3>屬性</h3>
-                    <p>火系、飛行系寶可夢，擁有強大的火焰攻擊能力</p>
-                </div>
-                
-                <div class="form-group">
-                    <h3>能力值</h3>
-                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;">
-                        <div>HP: <strong>78</strong></div>
-                        <div>攻擊: <strong>84</strong></div>
-                        <div>防禦: <strong>78</strong></div>
-                        <div>特攻: <strong>109</strong></div>
-                        <div>特防: <strong>85</strong></div>
-                        <div>速度: <strong>100</strong></div>
+                    <div>
+                        <h3 id="google-user-name">訓練師名稱</h3>
+                        <p id="google-user-email">user@example.com</p>
                     </div>
                 </div>
                 
-                <div class="form-group">
-                    <h3>技能</h3>
-                    <ul style="padding-left: 20px;">
-                        <li>火焰噴射 - 火系特攻</li>
-                        <li>翅膀攻擊 - 飛行系物攻</li>
-                        <li>龍爪 - 龍系物攻</li>
-                        <li>爆炸火焰 - 火系特攻</li>
-                    </ul>
+                <div style="margin-top: 20px; text-align: center;">
+                    <p>開始您的寶可夢冒險旅程吧！</p>
                 </div>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-outline close-btn">關閉</button>
-                <button class="btn btn-primary">加入收藏</button>
+                <button class="btn btn-primary close-btn" style="width: 100%;">開始探索</button>
             </div>
         </div>
     </div>
@@ -1265,8 +1295,11 @@
         // DOM元素获取
         const loginBtn = document.getElementById('login-btn');
         const registerBtn = document.getElementById('register-btn');
+        const googleLoginBtn = document.getElementById('google-login');
+        const googleRegisterBtn = document.getElementById('google-register');
         const loginModal = document.getElementById('login-modal');
         const registerModal = document.getElementById('register-modal');
+        const googleSuccessModal = document.getElementById('google-success-modal');
         const pokemonModal = document.getElementById('pokemon-modal');
         const closeBtns = document.querySelectorAll('.close-btn');
         const navLinks = document.querySelectorAll('nav a');
@@ -1276,94 +1309,134 @@
         const tradeCards = document.querySelectorAll('.trade-card');
         const eventCards = document.querySelectorAll('.event-card');
         
-        // 导航菜单激活状态
+        // 導航菜單激活狀態
         navLinks.forEach(link => {
             link.addEventListener('click', (e) => {
                 e.preventDefault();
                 
-                // 移除所有active类
+                // 移除所有active類
                 navLinks.forEach(item => item.classList.remove('active'));
                 
-                // 为当前点击的链接添加active类
+                // 為當前點擊的鏈接添加active類
                 link.classList.add('active');
                 
-                // 显示提示信息
-                showNotification(`已切换到: ${link.textContent.trim()}`);
+                // 顯示提示信息
+                showNotification(`已切換到: ${link.textContent.trim()}`);
             });
         });
         
-        // 登录按钮点击事件
+        // 登入按鈕點擊事件
         loginBtn.addEventListener('click', (e) => {
             e.preventDefault();
             loginModal.classList.add('active');
         });
         
-        // 注册按钮点击事件
+        // 註冊按鈕點擊事件
         registerBtn.addEventListener('click', (e) => {
             e.preventDefault();
             registerModal.classList.add('active');
         });
         
-        // 关闭按钮点击事件
+        // Google 登入按鈕點擊事件
+        googleLoginBtn.addEventListener('click', () => {
+            // 模擬 Google 登入流程
+            simulateGoogleLogin();
+        });
+        
+        // Google 註冊按鈕點擊事件
+        googleRegisterBtn.addEventListener('click', () => {
+            // 模擬 Google 註冊流程
+            simulateGoogleLogin();
+        });
+        
+        // 關閉按鈕點擊事件
         closeBtns.forEach(btn => {
             btn.addEventListener('click', () => {
                 loginModal.classList.remove('active');
                 registerModal.classList.remove('active');
                 pokemonModal.classList.remove('active');
+                googleSuccessModal.classList.remove('active');
             });
         });
         
-        // 宝可梦卡片点击事件
+        // 寶可夢卡片點擊事件
         cards.forEach(card => {
             card.addEventListener('click', () => {
-                // 获取宝可梦名称
+                // 獲取寶可夢名稱
                 const name = card.querySelector('.card-name').textContent;
                 document.getElementById('pokemon-name').textContent = name;
                 
-                // 显示宝可梦详情模态框
+                // 顯示寶可夢詳情模态框
                 pokemonModal.classList.add('active');
             });
         });
         
-        // 筛选按钮点击事件
+        // 篩選按鈕點擊事件
         filterBtns.forEach(btn => {
             btn.addEventListener('click', () => {
-                // 移除所有active类
+                // 移除所有active類
                 filterBtns.forEach(item => item.classList.remove('active'));
                 
-                // 为当前点击的按钮添加active类
+                // 為當前點擊的按鈕添加active類
                 btn.classList.add('active');
                 
-                // 显示提示信息
-                showNotification(`已筛选: ${btn.textContent.trim()}`);
+                // 顯示提示信息
+                showNotification(`已篩選: ${btn.textContent.trim()}`);
             });
         });
         
-        // 排行榜项点击事件
+        // 排行榜項點擊事件
         leaderboardItems.forEach(item => {
             item.addEventListener('click', () => {
                 const name = item.querySelector('h3').textContent;
-                showNotification(`查看训练师: ${name} 的详细信息`);
+                showNotification(`查看訓練師: ${name} 的詳細信息`);
             });
         });
         
-        // 交换卡片点击事件
+        // 交換卡片點擊事件
         tradeCards.forEach(card => {
             card.addEventListener('click', () => {
                 const tradeInfo = card.querySelector('p').textContent;
-                showNotification(`发起交换请求: ${tradeInfo}`);
+                showNotification(`發起交換請求: ${tradeInfo}`);
             });
         });
         
-        // 活动卡片点击事件
+        // 活動卡片點擊事件
         eventCards.forEach(card => {
             card.addEventListener('click', () => {
                 const eventTitle = card.querySelector('h3').textContent;
-                showNotification(`查看活动详情: ${eventTitle}`);
+                showNotification(`查看活動詳情: ${eventTitle}`);
             });
         });
         
-        // 显示通知函数
+        // 模擬 Google 登入流程
+        function simulateGoogleLogin() {
+            // 關閉所有開啟的模態框
+            loginModal.classList.remove('active');
+            registerModal.classList.remove('active');
+            
+            // 顯示載入狀態
+            showNotification('正在連接 Google 帳號...');
+            
+            // 模擬 API 請求延遲
+            setTimeout(() => {
+                // 隨機生成用戶名
+                const trainerNames = ['小智', '小霞', '小剛', '小茂', '小遙', '小光', '小勝', '小春'];
+                const randomName = trainerNames[Math.floor(Math.random() * trainerNames.length)];
+                
+                // 更新成功模態框中的用戶信息
+                document.getElementById('google-user-name').textContent = randomName;
+                document.getElementById('google-user-email').textContent = `${randomName.toLowerCase()}@pokemon.com`;
+                
+                // 顯示成功模態框
+                googleSuccessModal.classList.add('active');
+                
+                // 顯示歡迎通知
+                showNotification(`歡迎回來，${randomName}！`);
+            }, 1500);
+        }
+        
+        // 顯示通知函數
         function showNotification(message) {
             // 移除已有的通知
             const existingNotification = document.querySelector('.notification');
@@ -1371,7 +1444,7 @@
                 existingNotification.remove();
             }
             
-            // 创建通知元素
+            // 創建通知元素
             const notification = document.createElement('div');
             notification.className = 'notification';
             notification.textContent = message;
@@ -1392,13 +1465,13 @@
             
             document.body.appendChild(notification);
             
-            // 显示通知
+            // 顯示通知
             setTimeout(() => {
                 notification.style.transform = 'translateX(0)';
                 notification.style.opacity = '1';
             }, 10);
             
-            // 3秒后隐藏通知
+            // 3秒後隱藏通知
             setTimeout(() => {
                 notification.style.transform = 'translateX(100%)';
                 notification.style.opacity = '0';
@@ -1410,7 +1483,7 @@
             }, 3000);
         }
         
-        // 登录表单提交
+        // 登入表單提交
         loginModal.querySelector('.btn-primary').addEventListener('click', () => {
             const email = document.getElementById('login-email').value;
             const password = document.getElementById('login-password').value;
@@ -1423,7 +1496,7 @@
             }
         });
         
-        // 注册表单提交
+        // 註冊表單提交
         registerModal.querySelector('.btn-primary').addEventListener('click', () => {
             const name = document.getElementById('register-name').value;
             const email = document.getElementById('register-email').value;
@@ -1440,7 +1513,7 @@
             }
         });
         
-        // 点击模态框外部关闭模态框
+        // 點擊模态框外部關閉模态框
         window.addEventListener('click', (e) => {
             if (e.target === loginModal) {
                 loginModal.classList.remove('active');
@@ -1451,9 +1524,12 @@
             if (e.target === pokemonModal) {
                 pokemonModal.classList.remove('active');
             }
+            if (e.target === googleSuccessModal) {
+                googleSuccessModal.classList.remove('active');
+            }
         });
         
-        // 初始化显示通知
+        // 初始化顯示通知
         setTimeout(() => {
             showNotification('歡迎來到 PokeHub 寶可夢社群平台！');
         }, 1000);
